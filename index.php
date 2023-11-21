@@ -55,11 +55,14 @@ if (isset($_POST['name']) && isset($id)) {
 ?>
 <head>
     <link rel="stylesheet" href="style.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 </head>
 <nav>
         <ul>
         <li><a href="">Home</a></li>
         <li><a href="">Contact</a></li>
+        <li><a href="">FAQs</a></li>
         <li><a href="">About</a></li>
         </ul>    
     </nav>
@@ -72,7 +75,7 @@ if (isset($_POST['name']) && isset($id)) {
     <p>Date Created <br><input type="datetime-local" name="created" value="<?= isset($created) ? $created : '' ?>"> </p>
     <br> <br>
     <?php if (isset($id)) { ?>
-        <a href="index.php">Cancel</a>
+        <button><a href="index.php">Cancel</a></button>
         <button>Update</button>
     <?php } else { ?>
         <button>Save</button>
@@ -85,7 +88,6 @@ if (isset($_POST['name']) && isset($id)) {
     
 
     <thead>
-    <th>List Of users</th>
         <tr>
             <th>ID</th>
             <th>Instructor Name</th>
@@ -93,10 +95,9 @@ if (isset($_POST['name']) && isset($id)) {
             <th>Instructor Phone Number</th>
             <th>Title</th>
             <th>Date Created</th>
-            <th>Delete</th>
-            <th>Update</th>
+            <th>Remove</th>
+            <th>Change</th>
         </tr>
-
     </thead>
 
     <tbody>
@@ -116,9 +117,8 @@ if (isset($_POST['name']) && isset($id)) {
                     <td><?php echo $row['phone']; ?></td>
                     <td><?php echo $row['title']; ?></td>
                     <td><?php echo $row['created']; ?></td>
-                    <td width="200"> <button><a style="color: red" href="?action=delete&id=<?= $row['id'] ?>"> DELETE </a></td></button>
-                    <td><button><a href="?action=edit&id=<?= $row['id'] ?>&name=<?= $row['name'] ?>&email=<?= $row['email'] ?>&phone=<?= $row['phone'] ?>&title=<?= $row['title'] ?>&created=<?= $row['created'] ?>"> EDIT </a></button></td>
-                    </td>
+                    <td width="200"> <center><button class="btn"><a style="color: red" href="?action=delete&id=<?= $row['id'] ?>"><i class="fa fa-trash"></i></a></button></center></td>
+                    <td><center><button><a href="?action=edit&id=<?= $row['id'] ?>&name=<?= $row['name'] ?>&email=<?= $row['email'] ?>&phone=<?= $row['phone'] ?>&title=<?= $row['title'] ?>&created=<?= $row['created'] ?>"><i class="fa fa-check"></a></button></center></td>
                 </tr>
         <?php }
         } ?>
