@@ -52,12 +52,19 @@ if (isset($_POST['name']) && isset($id)) {
     errorCheck($sql, $conn, $result);
 }
 
-
 ?>
 <head>
     <link rel="stylesheet" href="style.css">
 </head>
-<form method="POST" action="">
+<nav>
+        <ul>
+        <li><a href="">Home</a></li>
+        <li><a href="">Contact</a></li>
+        <li><a href="">About</a></li>
+        </ul>    
+    </nav>
+<div class="container"><form method="POST" action="">
+    <h2>Input Instructor</h2>
     <p>Instructor Name <br><input name="name" value="<?= isset($name) ? $name : '' ?>"> </p>
     <p>Instructor Email <br><input name="email" value="<?= isset($email) ? $email : '' ?>"> </p>
     <p>Instructor Phone Number <br><input name="phone" value="<?= isset($phone) ? $phone : '' ?>"> </p>
@@ -69,13 +76,16 @@ if (isset($_POST['name']) && isset($id)) {
         <button>Update</button>
     <?php } else { ?>
         <button>Save</button>
+        <button type="button"><a href="index.php"> Clear </a></button>
     <?php } ?>
 </form>
 
-List Of users
 
-<div><center><table class="table">
+<table class="table">
+    
+
     <thead>
+    <th>List Of users</th>
         <tr>
             <th>ID</th>
             <th>Instructor Name</th>
@@ -106,12 +116,12 @@ List Of users
                     <td><?php echo $row['phone']; ?></td>
                     <td><?php echo $row['title']; ?></td>
                     <td><?php echo $row['created']; ?></td>
-                    <td width="200"> <a style="color: red" href="?action=delete&id=<?= $row['id'] ?>"> DELETE </a></td>
-                    <td>    <a href="?action=edit&id=<?= $row['id'] ?>&name=<?= $row['name'] ?>&email=<?= $row['email'] ?>&phone=<?= $row['phone'] ?>&title=<?= $row['title'] ?>&created=<?= $row['created'] ?>"> EDIT </a></td>
+                    <td width="200"> <button><a style="color: red" href="?action=delete&id=<?= $row['id'] ?>"> DELETE </a></td></button>
+                    <td><button><a href="?action=edit&id=<?= $row['id'] ?>&name=<?= $row['name'] ?>&email=<?= $row['email'] ?>&phone=<?= $row['phone'] ?>&title=<?= $row['title'] ?>&created=<?= $row['created'] ?>"> EDIT </a></button></td>
                     </td>
                 </tr>
         <?php }
         } ?>
     </tbody>
 
-</table></center></div>
+</table></div>
